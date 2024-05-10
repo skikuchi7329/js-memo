@@ -1,6 +1,6 @@
 export default class NotesAPI {
   //全てのメモを取得
-  static  getAllNotes() {
+  static getAllNotes() {
     const notes = JSON.parse(localStorage.getItem("notes") || "[]");
     return notes;
   }
@@ -10,8 +10,8 @@ export default class NotesAPI {
     const notes = NotesAPI.getAllNotes();
     const existingNotes = notes.find((note) => note.id == noteToSave.id);
 
-  //編集、更新
-    if(existingNotes) {
+    //編集、更新
+    if (existingNotes) {
       existingNotes.title = noteToSave.title;
       existingNotes.body = noteToSave.body;
       existingNotes.update = new Date().toISOString();
@@ -24,12 +24,15 @@ export default class NotesAPI {
       notes.push(noteToSave);
     }
 
-
     localStorage.setItem("notes", JSON.stringify(notes));
   }
 
   //メモを削除するAPI
-  static deleteNote() {
+  static deleteNote(id) {
+    const notes = NotesAPI.getAllNotes();
+    const newNotes = notes.filter((note) => note.id !== id);
+
+    localStorage.setItem("notes", JSON.stringify(newNotes));
 
   }
 }

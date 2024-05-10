@@ -6,3 +6,4 @@ import NotesAPI from "../NotesAPI.js";
 //   body: "JavaScriptマスター中",
 // });
 console.log(NotesAPI.getAllNotes());
+// NotesAPI.deleteNote(95782);
