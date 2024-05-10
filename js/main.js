@@ -1,9 +1,8 @@
-import NotesAPI from "../NotesAPI.js";
+import App from "./App.js";
+import NotesAPI from "./NotesAPI.js";
+import NotesView from "./NotesView.js";
 
-// NotesAPI.saveNote({
-//   id: 123456,
-//   title: "更新された2回目のメモです",
-//   body: "JavaScriptマスター中",
-// });
-console.log(NotesAPI.getAllNotes());
-// NotesAPI.deleteNote(95782);
+
+
+const root = document.getElementById("app");
+const app = new App(root);

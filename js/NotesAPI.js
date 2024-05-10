@@ -14,13 +14,13 @@ export default class NotesAPI {
     if (existingNotes) {
       existingNotes.title = noteToSave.title;
       existingNotes.body = noteToSave.body;
-      existingNotes.update = new Date().toISOString();
+      existingNotes.updated = new Date().toISOString();
     } else {
       // noteToSave.id = Math.floor(Math.random() + 100000);
       // noteToSave.update = new Date().toISOString();
       // notes.push(noteToSave);
       noteToSave.id = noteToSave.id;
-      noteToSave.update = new Date().toISOString();
+      noteToSave.updated = new Date().toISOString();
       notes.push(noteToSave);
     }
 
@@ -33,6 +33,5 @@ export default class NotesAPI {
     const newNotes = notes.filter((note) => note.id !== id);
 
     localStorage.setItem("notes", JSON.stringify(newNotes));
-
   }
 }
