@@ -82,13 +82,13 @@ export default class NotesView {
           this.onNoteSelect(noteListItem.dataset.noteId);
         });
 
-        noteListItem.addEventListener("dblclick", ()=> {
-          const doDelete = confirm("本当にこのメモを削除しますか？")
+        noteListItem.addEventListener("dblclick", () => {
+          const doDelete = confirm("本当にこのメモを削除しますか？");
 
-          if(doDelete) {
-            this.onNoteDelete(noteListItem.dataset.noteId)
+          if (doDelete) {
+            this.onNoteDelete(noteListItem.dataset.noteId);
           }
-        })
+        });
       });
   }
 
@@ -97,6 +97,12 @@ export default class NotesView {
     this.root.querySelector(".notesTitle").value = note.title;
     this.root.querySelector(".notesBody").value = note.body;
 
-    this.root.querySelector(`.notesList-item[data-note-id="${note.id}"]`).classList.add("notesList-item--selected")
+    this.root.querySelectorAll(".notesList-item").forEach((noteListItem) => {
+      noteListItem.classList.remove("notesList-item--selected");
+    });
+
+    this.root
+      .querySelector(`.notesList-item[data-note-id="${note.id}"]`)
+      .classList.add("notesList-item--selected");
   }
 }
